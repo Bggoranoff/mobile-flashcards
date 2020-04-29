@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
     purple: '#292477',
     gray: '#757575',
     white: '#fff',
@@ -9,6 +9,4 @@ const colors = {
     pink: '#b93fb3'
 }
 
-const STORAGE_KEY = 'MobileFlashcards:storage';
-
-export default { colors, STORAGE_KEY };
+export const STORAGE_KEY = 'MobileFlashcards:storage';

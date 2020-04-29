@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import * as reducer from './src/middleware';
+import decks from './src/middleware';
 import middleware from './src/middleware'
 import { StyleSheet, Text, View } from 'react-native';
 import AddCard from './src/components/AddCard';
@@ -14,9 +14,9 @@ import Question from './src/components/Question';
 
 export default function App() {
   return (
-    <Provider store={createStore(reducer)}>
+    <Provider store={createStore(decks, middleware)}>
       <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
+        <Deck />
       </View>
     </Provider>
   );
