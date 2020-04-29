@@ -3,29 +3,24 @@ import { connect } from 'react-redux';
 import { View, Text, TextInput, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { colors } from '../utils/_storage'
 
-class AddCard extends React.Component {
+class AddDeck extends React.Component {
     state = {
-        question: '',
-        answer: ''
+        deck: ''
     }
 
-    handleChange = name => text => {
-        this.setState({ [name]: text });
+    handleChange = text => {
+        this.setState({ deck: text });
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <View>
-                    <Text style={styles.label}>Question</Text>
-                    <TextInput style={styles.input} placeholder='Add your question' value={this.state.question} onChangeText={this.handleChange('question')}></TextInput>
+                    <Text style={styles.label}>Deck Title</Text>
+                    <TextInput style={styles.input} placeholder='Add deck title' value={this.state.deck} onChangeText={this.handleChange}></TextInput>
                 </View>
-                <View>
-                    <Text style={styles.label}>Answer</Text>
-                    <TextInput style={styles.input} placeholder='Add your answer' value={this.state.answer} onChangeText={this.handleChange('answer')}></TextInput>
-                </View>
-                <TouchableOpacity style={styles.button} onPress={() => console.log({ question: this.state.question, answer: this.state.answer })}>
-                    <Text style={styles.buttonText}>Add Card</Text>
+                <TouchableOpacity style={styles.button} onPress={() => console.log(this.state.deck)}>
+                    <Text style={styles.buttonText}>Add Deck</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -68,4 +63,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect()(AddCard);
+export default connect()(AddDeck);

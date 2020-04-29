@@ -11,12 +11,13 @@ import DeckDetails from './src/components/DeckDetails';
 import DeckList from './src/components/DeckList';
 import NoCardsError from './src/components/NoCardsError';
 import Question from './src/components/Question';
+import AddDeck from './src/components/AddDeck';
 
 export default function App() {
   return (
     <Provider store={createStore(decks, middleware)}>
       <View style={styles.container}>
-        <AddCard />
+        <AddDeck />
       </View>
     </Provider>
   );

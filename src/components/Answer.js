@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop: 10,
         padding: 7,
-        width: Math.round(0.5*Dimensions.get('window').width),
+        width: 170,
     },
     switchText: {
         color: colors.red,
