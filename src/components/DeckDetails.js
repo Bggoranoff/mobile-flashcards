@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { colors } from '../utils/_storage';
 import Deck from './Deck';
 
@@ -9,7 +9,7 @@ class DeckDetails extends React.Component {
     render() {
         return (
             <View style={styles.details}>
-                <Deck />
+                <Deck style={styles.deck} />
                 <TouchableOpacity style={styles.button} onPress={() => console.log('ADD CARD')}>
                     <Text style={styles.buttonText}>Add Card</Text>
                 </TouchableOpacity>
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
         borderColor: colors.black,
         borderRadius: 5,
         marginTop: 10,
-        padding: 7
+        padding: 7,
+        width: Math.round(0.5*Dimensions.get('window').width),
     },
     deleteLink: {
         fontSize: 22,
@@ -47,11 +48,15 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: colors.white,
-        fontSize: 20
+        fontSize: 20,
+        textAlign: 'center'
     },
     deleteText: {
         color: colors.red,
         fontSize: 16
+    },
+    deck: {
+        marginBottom: Math.round(0.15*Dimensions.get('window').height)
     }
 })
 

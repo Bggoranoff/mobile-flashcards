@@ -7,7 +7,7 @@ class Deck extends React.Component {
 
     render() {
         return (
-            <View style={styles.deck}>
+            <View style={[styles.deck, this.props.style]}>
                 <Text style={styles.title}>Deck Title</Text>
                 <Text style={styles.subtitle}>N cards</Text>
             </View>
