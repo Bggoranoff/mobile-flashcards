@@ -17,7 +17,7 @@ class Deck extends React.Component {
 
 const styles = StyleSheet.create({
     title: {
-        fontSize: 25
+        fontSize: 30
     },
     subtitle: {
         fontSize: 17,

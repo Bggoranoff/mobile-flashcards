@@ -6,7 +6,8 @@ export const colors = {
     orange: '#f26f28',
     blue: '#4e4cb8',
     lightpurple: '#7c53c3',
-    pink: '#b93fb3'
+    pink: '#b93fb3',
+    black: '#17202A'
 }
 
 export const STORAGE_KEY = 'MobileFlashcards:storage';
