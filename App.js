@@ -16,7 +16,7 @@ export default function App() {
   return (
     <Provider store={createStore(decks, middleware)}>
       <View style={styles.container}>
-        <DeckDetails />
+        <Answer />
       </View>
     </Provider>
   );
