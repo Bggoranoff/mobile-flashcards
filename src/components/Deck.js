@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     deck: {
         marginTop: 12,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 12
     }
 })
 
