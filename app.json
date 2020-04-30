@@ -1,10 +1,21 @@
 {
-  "name": "reactnd-project-udacicards",
-  "displayName": "reactnd-project-udacicards",
+  "name": "mobile-flashcards",
+  "displayName": "MobiCards",
   "expo": {
     "name": "Mobicards",
+    "description": "Study smart - study with flashcards!",
     "slug": "Mobile Flashcards",
     "version": "1.0.0",
+    "icon": "./assets/stackofcards.png",
+    "notification": {
+      "icon": "./assets/stackofcards.png"
+    },
+    "ios": {
+      "bundleIdentifier": "org.mobicards.exp"
+    },
+    "android": {
+      "package": "org.mobicards.exp"
+    },
     "platforms": [
       "ios",
       "android",
