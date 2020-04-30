@@ -2,17 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { colors } from '../utils/_storage';
+import Question from './Question';
+import Answer from './Answer';
 
-class Answer extends React.Component {
+class Card extends React.Component {
+    state={
+        answer: false
+    }
 
+    toggleView = () => {
+        this.setState(prevState => ({
+            answer: !prevState.answer
+        }));
+    }
     render() {
         return (
-                <View style={styles.center}>
-                    <Text style={[styles.title, styles.center]}>It does.</Text>
-                    <TouchableOpacity onPress={this.props.toggleView}>
-                        <Text style={styles.switchText}>Question</Text>
+            <View style={styles.questionDetails}>
+                {this.state.answer ? <Answer toggleView={this.toggleView} /> : <Question toggleView={this.toggleView} />}
+                <View>
+                    <TouchableOpacity style={[styles.button, { backgroundColor: colors.green, borderColor: colors.green}]}>
+                        <Text style={styles.buttonText}>Correct</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.button, { backgroundColor: colors.red, borderColor: colors.red}]}>
+                        <Text style={styles.buttonText}>Incorrect</Text>
                     </TouchableOpacity>
                 </View>
+            </View>
         )
     }
 }
@@ -28,7 +43,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop: 10,
         padding: 7,
-        width: 170,
+        width: Math.round(0.5*Dimensions.get('window').width),
     },
     switchText: {
         color: colors.red,
@@ -53,4 +68,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect()(Answer);
+export default connect()(Card);

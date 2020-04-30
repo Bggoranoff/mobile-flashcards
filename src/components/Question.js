@@ -7,22 +7,12 @@ class Question extends React.Component {
 
     render() {
         return (
-            <View style={styles.questionDetails}>
                 <View style={styles.center}>
                     <Text style={[styles.title, styles.center]}>Does React Native work with Android?</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.props.toggleView}>
                         <Text style={styles.switchText}>Answer</Text>
                     </TouchableOpacity>
                 </View>
-                <View>
-                    <TouchableOpacity style={[styles.button, { backgroundColor: colors.green, borderColor: colors.green}]}>
-                        <Text style={styles.buttonText}>Correct</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.button, { backgroundColor: colors.red, borderColor: colors.red}]}>
-                        <Text style={styles.buttonText}>Incorrect</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
         )
     }
 }
