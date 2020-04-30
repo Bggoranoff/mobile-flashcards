@@ -4,6 +4,7 @@ import { Dimensions, View, Text, StyleSheet, TouchableOpacity, ScrollView } from
 import Deck from './Deck';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { colors } from '../utils/_storage';
 import DeckDetails from './DeckDetails';
 
 const Stack = createStackNavigator();
@@ -15,7 +16,7 @@ class DeckList extends React.Component {
             <View style={styles.listContainer}>
                 <ScrollView style={styles.list}>
                     <Text style={styles.title}>Your Decks</Text>
-                    {this.props.decks && Object.keys(this.props.decks).sort((a, b) => a.localeCompare(b)).map((title, i) => {
+                    {this.props.decks && this.props.decks.length > 0 ? Object.keys(this.props.decks).sort((a, b) => a.localeCompare(b)).map((title, i) => {
                         if (this.props.decks[title] !== null) {
                             return (
                                 <View key={i.toFixed()}>
@@ -24,8 +25,7 @@ class DeckList extends React.Component {
                                 </View>
                             );
                         }
-                    })}
-
+                    }) : <View style={styles.center}><Text style={styles.text}>You have not added any decks with flashcards. </Text><TouchableOpacity onPress={() => this.props.navigation.openDrawer()}><Text style={styles.slideText}>Slide</Text></TouchableOpacity><Text style={styles.text}> to create your first one.</Text></View>}
                 </ScrollView>
             </View>
         )
@@ -54,6 +54,24 @@ const styles = StyleSheet.create({
     listContainer: {
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    slideText: {
+        color: colors.blue,
+        fontSize: 20,
+        textAlign: 'center'
+    },
+    text: {
+        color: colors.black,
+        fontSize: 20,
+        textAlign: 'center',
+        textAlignVertical: 'center'
+    },
+    center: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        textAlign: 'center',
+        marginTop: Math.round(0.25 * Dimensions.get('window').height)
     }
 });
 

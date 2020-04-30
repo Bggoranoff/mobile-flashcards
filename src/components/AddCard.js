@@ -33,6 +33,9 @@ class AddCard extends React.Component {
                 <TouchableOpacity style={styles.button} onPress={this.handleSubmit}>
                     <Text style={styles.buttonText}>Add Card</Text>
                 </TouchableOpacity>
+                {Platform.OS === 'ios' && <TouchableOpacity style={styles.deleteLink} onPress={() => this.props.navigation.goBack()}>
+                    <Text style={styles.goBackText}>Back</Text>
+                </TouchableOpacity>}
             </View>
         )
     }
@@ -71,6 +74,14 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontSize: 20,
         textAlign: 'center'
+    },
+    goBackText: {
+        color: colors.blue,
+        fontSize: 16
+    },
+    plainLink: {
+        fontSize: 22,
+        marginTop: 20
     }
 });
 

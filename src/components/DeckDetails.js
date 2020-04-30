@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import { colors } from '../utils/_storage';
 import Deck from './Deck';
 import { handleDeleteDeck } from '../actions';
@@ -23,9 +23,12 @@ class DeckDetails extends React.Component {
                 <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Quiz', { title: title })}>
                     <Text style={styles.buttonText}>Start Quiz</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.deleteLink} onPress={this.deleteDeck}>
+                <TouchableOpacity style={styles.plainLink} onPress={this.deleteDeck}>
                     <Text style={styles.deleteText}>Delete Deck</Text>
                 </TouchableOpacity>
+                {Platform.OS === 'ios' && <TouchableOpacity style={styles.plainLink} onPress={() => this.props.navigation.goBack()}>
+                    <Text style={styles.goBackText}>Back</Text>
+                </TouchableOpacity>}
             </View>
         )
     }
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
         padding: 7,
         width: 170,
     },
-    deleteLink: {
+    plainLink: {
         fontSize: 22,
         marginTop: 20
     },
@@ -64,7 +67,11 @@ const styles = StyleSheet.create({
     },
     deck: {
         marginBottom: Math.round(0.15*Dimensions.get('window').height)
-    }
+    },
+    goBackText: {
+        color: colors.blue,
+        fontSize: 16
+    },
 });
 
 export default connect()(DeckDetails);
