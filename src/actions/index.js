@@ -3,12 +3,20 @@ import * as API from '../utils/api';
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const SAVE_DECK = 'SAVE_DECK';
 export const SAVE_CARD = 'SAVE_CARD';
+export const DELETE_DECK = 'DELETE_DECK';
 
 function receiveDecks(decks) {
     return {
         type: RECEIVE_DECKS,
         decks
     };
+}
+
+function deleteDeck(title) {
+    return {
+        type: DELETE_DECK,
+        title
+    }
 }
 
 function saveDeck(title) {
@@ -44,5 +52,12 @@ export function handleInitialData() {
     return dispatch => {
         return API.getDecks()
             .then(decks => dispatch(receiveDecks(decks)));
+    };
+}
+
+export function handleDeleteDeck(title) {
+    return dispatch => {
+        return API.deleteDeck(title)
+            .then(() => dispatch(deleteDeck(title)));
     };
 }

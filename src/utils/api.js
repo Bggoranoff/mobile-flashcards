@@ -13,12 +13,13 @@ export function getDeck(id) {
 }
 
 export function saveDeckTitle(title) {
-    return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-        [title]: {
-            title,
-            questions: []
-        }
-    }));
+    return AsyncStorage.getItem(STORAGE_KEY)
+        .then(JSON.parse)
+        .then(results => {
+            results = { ...results, [title]: { title: title, questions: [] } };
+            AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(results));
+            return results[title].title;
+        });
 }
 
 export function saveCardToDeck(title, { question, answer }) {
@@ -28,5 +29,15 @@ export function saveCardToDeck(title, { question, answer }) {
             results = { ...results, [title]: { ...results[title], questions: [...results[title].questions, { question, answer }] } };
             AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(results));
             return { question, answer };
-        })
+        });
+}
+
+export function deleteDeck(title) {
+    return AsyncStorage.getItem(STORAGE_KEY)
+        .then(JSON.parse)
+        .then(results => {
+            delete results[title];
+            AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(results));
+            return title;
+        });
 }

@@ -15,10 +15,17 @@ class DeckList extends React.Component {
             <View style={styles.listContainer}>
                 <ScrollView style={styles.list}>
                     <Text style={styles.title}>Your Decks</Text>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    
+                    {this.props.decks && Object.keys(this.props.decks).map((title, i) => {
+                        if (this.props.decks[title] !== null) {
+                            return (
+                                <View>
+                                    <View style={styles.hr} />
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails', { title: this.props.decks[title].title })}><Deck title={title} key={i.toFixed()} /></TouchableOpacity>
+                                </View>
+                            );
+                        }
+                    })}
+
                 </ScrollView>
             </View>
         )
@@ -50,4 +57,10 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect()(DeckList);
+function mapStateToProps({ decks }) {
+    return {
+        decks
+    };
+}
+
+export default connect(mapStateToProps)(DeckList);

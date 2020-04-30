@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TextInput, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import { colors } from '../utils/_storage'
+import { colors } from '../utils/_storage';
+import { handleSaveCard } from '../actions';
 
 class AddCard extends React.Component {
     state = {
@@ -11,6 +12,11 @@ class AddCard extends React.Component {
 
     handleChange = name => text => {
         this.setState({ [name]: text });
+    }
+
+    handleSubmit = () => {
+        this.props.dispatch(handleSaveCard(this.props.route.params.title, { question: this.state.question, answer: this.state.answer }));
+        this.props.navigation.navigate('List');
     }
 
     render() {
@@ -24,7 +30,7 @@ class AddCard extends React.Component {
                     <Text style={styles.label}>Answer</Text>
                     <TextInput style={styles.input} placeholder='Add your answer' value={this.state.answer} onChangeText={this.handleChange('answer')}></TextInput>
                 </View>
-                <TouchableOpacity style={styles.button} onPress={() => console.log({ question: this.state.question, answer: this.state.answer })}>
+                <TouchableOpacity style={styles.button} onPress={this.handleSubmit}>
                     <Text style={styles.buttonText}>Add Card</Text>
                 </TouchableOpacity>
             </View>
@@ -66,6 +72,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center'
     }
-})
+});
 
-export default connect()(AddCard);
+function mapStateToProps({ decks }) {
+    return {
+        decks
+    }
+}
+
+export default connect(mapStateToProps)(AddCard);

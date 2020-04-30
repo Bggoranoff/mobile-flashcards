@@ -8,8 +8,12 @@ class Deck extends React.Component {
     render() {
         return (
             <View style={[styles.deck, this.props.style]}>
-                <Text style={styles.title}>Deck Title</Text>
-                <Text style={styles.subtitle}>N cards</Text>
+                {this.props.decks[this.props.title] !== null ? (
+                    <View>
+                        <Text style={styles.title}>{this.props.title}</Text>
+                        <Text style={styles.subtitle}>{this.props.decks[this.props.title].questions.length}</Text>
+                    </View>
+                ) : null}
             </View>
         )
     }
@@ -29,6 +33,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 12
     }
-})
+});
 
-export default connect()(Deck);
+function mapStateToProps({ decks }) {
+    return {
+        decks
+    };
+}
+
+export default connect(mapStateToProps)(Deck);

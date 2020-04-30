@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { handleInitialData } from '../actions';
 import DeckList from './DeckList';
 import AddCard from './AddCard';
 import Deck from './Deck';
@@ -11,12 +12,12 @@ import NoCardsError from './NoCardsError';
 import Card from './Card'
 import AddDeck from './AddDeck';
 
-class MainView extends React.Component {
+export class MainView extends React.Component {
     render() {
-        const { Cmp } = this.props.route.params;
+        const { Cmp, forcedNavigation } = this.props.route.params;
         return (
             <View style={styles.container}>
-                <Cmp navigation={this.props.navigation} />
+                <Cmp navigation={this.props.navigation} route={this.props.route} forcedNavigation={forcedNavigation} />
             </View>
         );
     }
@@ -24,12 +25,12 @@ class MainView extends React.Component {
 
 const Stack = createStackNavigator();
 
-class Main extends React.Component {
+export class Main extends React.Component {
     render() {
+        const { navigation } = this.props;
         return (
-            <Stack.Navigator initialRouteName={this.props.route.params.name} screenOptions={{ headerShown: false }}>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='List' component={MainView} initialParams={{ Cmp: DeckList }} />
-                <Stack.Screen name='AddDeck' component={MainView} initialParams={{ Cmp: AddDeck }} />
                 <Stack.Screen name='DeckDetails' component={MainView} initialParams={{ Cmp: DeckDetails }} />
                 <Stack.Screen name='AddCard' component={MainView} initialParams={{ Cmp: AddCard }} />
                 <Stack.Screen name='Deck' component={MainView} initialParams={{ Cmp: Deck }} />
@@ -48,5 +49,3 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-
-export default Main;
