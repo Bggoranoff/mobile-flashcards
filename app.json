@@ -2,7 +2,7 @@
   "name": "mobile-flashcards",
   "displayName": "MobiCards",
   "expo": {
-    "name": "Mobicards",
+    "name": "MobiCards",
     "description": "Study smart - study with flashcards!",
     "slug": "MobiCards",
     "version": "1.0.0",
