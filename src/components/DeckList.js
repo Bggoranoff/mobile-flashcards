@@ -2,6 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dimensions, View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import Deck from './Deck';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import DeckDetails from './DeckDetails';
+
+const Stack = createStackNavigator();
 
 class DeckList extends React.Component {
 
@@ -9,44 +14,18 @@ class DeckList extends React.Component {
         return (
             <View style={styles.listContainer}>
                 <ScrollView style={styles.list}>
-                <Text style={styles.title}>Your Decks</Text>
-                <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
+                    <Text style={styles.title}>Your Decks</Text>
                     <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails')}><Deck /></TouchableOpacity>
                     <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
-                    <View style={styles.hr} />
-                    <TouchableOpacity onPress={() => console.log('SEE DECK')}><Deck /></TouchableOpacity>
+                    
                 </ScrollView>
             </View>
         )
     }
 }
+
+
 
 const styles = StyleSheet.create({
     hr: {

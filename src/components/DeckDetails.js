@@ -10,7 +10,7 @@ class DeckDetails extends React.Component {
         return (
             <View style={styles.details}>
                 <Deck style={styles.deck} />
-                <TouchableOpacity style={styles.button} onPress={() => console.log('ADD CARD')}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('AddCard')}>
                     <Text style={styles.buttonText}>Add Card</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={() => console.log('START QUIZ')}>

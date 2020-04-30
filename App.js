@@ -13,23 +13,21 @@ import AddDeck from './src/components/AddDeck';
 import Card from './src/components/Card';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack'
 import Main from './src/components/Main';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
       <NavigationContainer>
         <Provider store={createStore(decks, middleware)}>
           <Drawer.Navigator initialRouteName="List">
-            <Drawer.Screen options={{ title: 'Mobile Flashcards'}} name='List' component={Main} initialParams={{ Cmp: DeckList }} />
-            <Drawer.Screen name='Deck' component={Main} initialParams={{ Cmp: Deck }} />
-            <Drawer.Screen name='Card' component={Main} initialParams={{ Cmp: Card }} />
-            <Drawer.Screen name='AddDeck' component={Main} initialParams={{ Cmp: AddDeck }} />
-            <Drawer.Screen name='AddCard' component={Main} initialParams={{ Cmp: AddCard }} />
-            <Drawer.Screen name='NoCardsError' component={Main} initialParams={{ Cmp: NoCardsError }} />
-            <Drawer.Screen name='DeckDetails' component={Main} initialParams={{ Cmp: DeckDetails }} />
+            <Drawer.Screen options={{ drawerLabel: 'Your Decks', drawerIcon: () => <MaterialCommunityIcons name='cards-variant' /> }} name='List' component={Main} initialParams={{ name: 'DeckList' }} />
+            <Drawer.Screen options={{ drawerLabel: 'Add Deck', drawerIcon: () => <AntDesign name='plus' /> }} name='AddDeck' component={Main} initialParams={{ name: 'AddDeck' }} />
           </Drawer.Navigator>
         </Provider>
       </NavigationContainer>
