@@ -10,6 +10,7 @@ import { Main, MainView } from './src/components/Main';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import AddDeck from './src/components/AddDeck';
 import { handleInitialData } from './src/actions';
+import { setLocalNotification } from './src/utils/helpers';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,6 +19,7 @@ const store = createStore(reducers, middleware);
 class Root extends React.Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
+    setLocalNotification();
   }
   render() {
     return (

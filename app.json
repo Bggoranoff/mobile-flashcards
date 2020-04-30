@@ -2,8 +2,8 @@
   "name": "reactnd-project-udacicards",
   "displayName": "reactnd-project-udacicards",
   "expo": {
-    "name": "reactnd-project-udacicards",
-    "slug": "reactnd-project-udacicards",
+    "name": "Mobicards",
+    "slug": "Mobile Flashcards",
     "version": "1.0.0",
     "platforms": [
       "ios",

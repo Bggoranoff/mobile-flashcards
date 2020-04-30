@@ -18,9 +18,9 @@ class DeckList extends React.Component {
                     {this.props.decks && Object.keys(this.props.decks).sort((a, b) => a.localeCompare(b)).map((title, i) => {
                         if (this.props.decks[title] !== null) {
                             return (
-                                <View>
+                                <View key={i.toFixed()}>
                                     <View style={styles.hr} />
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails', { title: this.props.decks[title].title })}><Deck title={title} key={i.toFixed()} /></TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails', { title: this.props.decks[title].title })}><Deck title={title} /></TouchableOpacity>
                                 </View>
                             );
                         }

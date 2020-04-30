@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 import Card from './Card';
 import NoCardsError from './NoCardsError';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class Quiz extends React.Component {
     state = {
@@ -12,6 +13,7 @@ class Quiz extends React.Component {
     answerCorrect = () => {
         if (this.state.questions.length <= 1) {
             this.props.navigation.navigate('List');
+            clearLocalNotification().then(setLocalNotification).catch(() => alert('Please request notifications in order for us to help you study regularly.'));
         }
         let notAnsweredQuestions = this.state.questions;
         notAnsweredQuestions.shift();
@@ -25,7 +27,7 @@ class Quiz extends React.Component {
     }
 
     render() {
-        return <View>{this.state.questions.length > 0 ? <Card card={this.state.questions[0]} answerCorrect={this.answerCorrect} answerIncorrect={this.answerIncorrect} /> : <NoCardsError />}</View>
+        return <View>{this.state.questions.length > 0 ? <Card key={this.state.questions[0].question} card={this.state.questions[0]} answerCorrect={this.answerCorrect} answerIncorrect={this.answerIncorrect} /> : <NoCardsError />}</View>
     }
 }
 
