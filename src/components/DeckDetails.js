@@ -13,13 +13,14 @@ class DeckDetails extends React.Component {
     }
 
     render() {
+        const { title } = this.props.route.params;
         return (
             <View style={styles.details} >
-                <Deck style={styles.deck} title={this.props.route.params.title} />
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('AddCard', { title: this.props.route.params.title })}>
+                <Deck style={styles.deck} title={title} />
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('AddCard', { title: title })}>
                     <Text style={styles.buttonText}>Add Card</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => console.log('START QUIZ')}>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Quiz', { title: title })}>
                     <Text style={styles.buttonText}>Start Quiz</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.deleteLink} onPress={this.deleteDeck}>

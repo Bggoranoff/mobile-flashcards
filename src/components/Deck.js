@@ -11,7 +11,7 @@ class Deck extends React.Component {
                 {this.props.decks[this.props.title] !== null ? (
                     <View>
                         <Text style={styles.title}>{this.props.title}</Text>
-                        <Text style={styles.subtitle}>{this.props.decks[this.props.title].questions.length}</Text>
+                        <Text style={styles.subtitle}>{this.props.decks[this.props.title].questions.length === 0 ? 'No' : this.props.decks[this.props.title].questions.length} cards</Text>
                     </View>
                 ) : null}
             </View>
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontSize: 17,
-        color: colors.gray
+        color: colors.gray,
+        textAlign: 'center'
     },
     deck: {
         marginTop: 12,

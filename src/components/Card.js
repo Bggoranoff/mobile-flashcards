@@ -18,12 +18,12 @@ class Card extends React.Component {
     render() {
         return (
             <View style={styles.questionDetails}>
-                {this.state.answer ? <Answer toggleView={this.toggleView} /> : <Question toggleView={this.toggleView} />}
+                {this.state.answer ? <Answer toggleView={this.toggleView} answer={this.props.card.answer} /> : <Question toggleView={this.toggleView} question={this.props.card.question} />}
                 <View>
-                    <TouchableOpacity style={[styles.button, { backgroundColor: colors.green, borderColor: colors.green}]}>
+                    <TouchableOpacity style={[styles.button, { backgroundColor: colors.green, borderColor: colors.green}]} onPress={this.props.answerCorrect}>
                         <Text style={styles.buttonText}>Correct</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.button, { backgroundColor: colors.red, borderColor: colors.red}]}>
+                    <TouchableOpacity style={[styles.button, { backgroundColor: colors.red, borderColor: colors.red}]} onPress={this.props.answerIncorrect}>
                         <Text style={styles.buttonText}>Incorrect</Text>
                     </TouchableOpacity>
                 </View>

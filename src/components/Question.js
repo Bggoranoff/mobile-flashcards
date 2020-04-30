@@ -8,7 +8,7 @@ class Question extends React.Component {
     render() {
         return (
                 <View style={styles.center}>
-                    <Text style={[styles.title, styles.center]}>Does React Native work with Android?</Text>
+                    <Text style={[styles.title, styles.center]}>{this.props.question}</Text>
                     <TouchableOpacity onPress={this.props.toggleView}>
                         <Text style={styles.switchText}>Answer</Text>
                     </TouchableOpacity>

@@ -11,13 +11,14 @@ import DeckDetails from './DeckDetails';
 import NoCardsError from './NoCardsError';
 import Card from './Card'
 import AddDeck from './AddDeck';
+import Quiz from './Quiz';
 
 export class MainView extends React.Component {
     render() {
-        const { Cmp, forcedNavigation } = this.props.route.params;
+        const { Cmp } = this.props.route.params;
         return (
             <View style={styles.container}>
-                <Cmp navigation={this.props.navigation} route={this.props.route} forcedNavigation={forcedNavigation} />
+                <Cmp navigation={this.props.navigation} route={this.props.route} />
             </View>
         );
     }
@@ -27,14 +28,13 @@ const Stack = createStackNavigator();
 
 export class Main extends React.Component {
     render() {
-        const { navigation } = this.props;
         return (
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='List' component={MainView} initialParams={{ Cmp: DeckList }} />
                 <Stack.Screen name='DeckDetails' component={MainView} initialParams={{ Cmp: DeckDetails }} />
                 <Stack.Screen name='AddCard' component={MainView} initialParams={{ Cmp: AddCard }} />
                 <Stack.Screen name='Deck' component={MainView} initialParams={{ Cmp: Deck }} />
-                <Stack.Screen name='Card' component={MainView} initialParams={{ Cmp: Card }} />
+                <Stack.Screen name='Quiz' component={MainView} initialParams={{ Cmp: Quiz }} />
             </Stack.Navigator>
         );
     }

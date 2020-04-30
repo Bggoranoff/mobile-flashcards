@@ -8,7 +8,7 @@ class Answer extends React.Component {
     render() {
         return (
                 <View style={styles.center}>
-                    <Text style={[styles.title, styles.center]}>It does.</Text>
+                    <Text style={[styles.title, styles.center]}>{this.props.answer}</Text>
                     <TouchableOpacity onPress={this.props.toggleView}>
                         <Text style={styles.switchText}>Question</Text>
                     </TouchableOpacity>

@@ -15,7 +15,7 @@ class DeckList extends React.Component {
             <View style={styles.listContainer}>
                 <ScrollView style={styles.list}>
                     <Text style={styles.title}>Your Decks</Text>
-                    {this.props.decks && Object.keys(this.props.decks).map((title, i) => {
+                    {this.props.decks && Object.keys(this.props.decks).sort((a, b) => a.localeCompare(b)).map((title, i) => {
                         if (this.props.decks[title] !== null) {
                             return (
                                 <View>
