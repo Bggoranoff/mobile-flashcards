@@ -1,16 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import { handleInitialData } from '../actions';
 import DeckList from './DeckList';
 import AddCard from './AddCard';
 import Deck from './Deck';
 import DeckDetails from './DeckDetails';
-import NoCardsError from './NoCardsError';
-import Card from './Card'
-import AddDeck from './AddDeck';
 import Quiz from './Quiz';
 
 export class MainView extends React.Component {

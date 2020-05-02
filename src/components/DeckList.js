@@ -2,12 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dimensions, View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import Deck from './Deck';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { colors } from '../utils/_storage';
-import DeckDetails from './DeckDetails';
-
-const Stack = createStackNavigator();
 
 class DeckList extends React.Component {
 
@@ -16,7 +11,7 @@ class DeckList extends React.Component {
             <View style={styles.listContainer}>
                 <ScrollView style={styles.list}>
                     <Text style={styles.title}>Your Decks</Text>
-                    {this.props.decks && this.props.decks.length > 0 ? Object.keys(this.props.decks).sort((a, b) => a.localeCompare(b)).map((title, i) => {
+                    {this.props.decks && Object.keys(this.props.decks).filter(deck => this.props.decks[deck] !== null).length > 0 ? Object.keys(this.props.decks).sort((a, b) => a.localeCompare(b)).map((title, i) => {
                         if (this.props.decks[title] !== null) {
                             return (
                                 <View key={i.toFixed()}>
@@ -25,7 +20,7 @@ class DeckList extends React.Component {
                                 </View>
                             );
                         }
-                    }) : <View style={styles.center}><Text style={styles.text}>You have not added any decks with flashcards. </Text><TouchableOpacity onPress={() => this.props.navigation.openDrawer()}><Text style={styles.slideText}>Slide</Text></TouchableOpacity><Text style={styles.text}> to create your first one.</Text></View>}
+                    }) : <View style={styles.center}><Text style={styles.text}>You have not added any decks to your collection. Swipe right to create your first flashcards deck.</Text><TouchableOpacity style={styles.button} onPress={() => this.props.navigation.openDrawer()}><Text style={styles.buttonText}>Swipe</Text></TouchableOpacity></View>}
                 </ScrollView>
             </View>
         )
@@ -55,11 +50,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    slideText: {
-        color: colors.blue,
-        fontSize: 20,
-        textAlign: 'center'
-    },
     text: {
         color: colors.black,
         fontSize: 20,
@@ -70,8 +60,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
-        textAlign: 'center',
-        marginTop: Math.round(0.25 * Dimensions.get('window').height)
+        marginTop: Math.round(0.25 * (Dimensions.get('window').height > 600 ? 600 : Dimensions.get('window').height))
+    },
+    button: {
+        backgroundColor: colors.black,
+        borderWidth: 1,
+        borderColor: colors.black,
+        borderRadius: 5,
+        marginTop: 20,
+        padding: 7,
+        width: 170,
+    },
+    buttonText: {
+        color: colors.white,
+        fontSize: 20,
+        textAlign: 'center'
     }
 });
 

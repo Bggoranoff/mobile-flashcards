@@ -13,7 +13,7 @@ class Answer extends React.Component {
                         <Text style={styles.switchText}>Question</Text>
                     </TouchableOpacity>
                 </View>
-        )
+        );
     }
 }
 

@@ -28,7 +28,7 @@ class AddCard extends React.Component {
                 </View>
                 <View>
                     <Text style={styles.label}>Answer</Text>
-                    <TextInput style={styles.input} placeholder='Add your answer' value={this.state.answer} onChangeText={this.handleChange('answer')}></TextInput>
+                    <TextInput style={styles.input} placeholder='Add the answer' value={this.state.answer} onChangeText={this.handleChange('answer')}></TextInput>
                 </View>
                 <TouchableOpacity style={styles.button} onPress={this.handleSubmit}>
                     <Text style={styles.buttonText}>Add Card</Text>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         fontSize: 20,
         padding: 5,
-        width: Math.round(0.6*Dimensions.get('window').width)
+        width: Math.round(0.6 * (Dimensions.get('window').width > 800 ? 800 : Dimensions.get('window').width))
     },
     container: {
         alignItems: 'center',

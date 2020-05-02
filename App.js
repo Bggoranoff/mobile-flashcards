@@ -5,7 +5,7 @@ import reducers from './src/reducers';
 import middleware from './src/middleware';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Main, MainView } from './src/components/Main';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import AddDeck from './src/components/AddDeck';

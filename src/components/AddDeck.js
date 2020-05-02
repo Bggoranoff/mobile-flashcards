@@ -21,6 +21,7 @@ class AddDeck extends React.Component {
     }
 
     render() {
+        console.log(Dimensions.get('window').width);
         return (
             <View style={styles.container}>
                 <View>
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 27,
         marginTop: 5,
-        marginBottom: 5,
+        marginBottom: Math.round(0.05 * Dimensions.get('window').height),
         textAlign: 'center'
     },
     input: {
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         fontSize: 20,
         padding: 5,
-        width: Math.round(0.6 * Dimensions.get('window').width)
+        width: Math.round(0.6 * (Dimensions.get('window').width > 800 ? 800 : Dimensions.get('window').width))
     },
     container: {
         alignItems: 'center',

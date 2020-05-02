@@ -8,7 +8,7 @@ class Question extends React.Component {
     render() {
         return (
                 <View style={styles.center}>
-                    <Text style={[styles.title, styles.center]}>{this.props.question}</Text>
+                    <Text style={[styles.title, { textAlign: 'center' }]}>{this.props.question}</Text>
                     <TouchableOpacity onPress={this.props.toggleView}>
                         <Text style={styles.switchText}>Answer</Text>
                     </TouchableOpacity>
@@ -48,9 +48,8 @@ const styles = StyleSheet.create({
         marginBottom: Math.round(0.05*Dimensions.get('window').height)
     },
     center: {
-        alignItems: 'center',
-        textAlign: 'center'
-    }
+        alignItems: 'center'
+    },
 })
 
 export default connect()(Question);
