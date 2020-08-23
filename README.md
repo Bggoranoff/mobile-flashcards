@@ -1,4 +1,5 @@
 # Mobile Flashcards
+[Google Play Link](https://play.google.com/store/apps/details?id=org.rembcard.exp)
 
 An mobile application made with [React Native](https://reactnative.dev/) for simplifying the process of individual studying by ebabling the user to break everything he has learned so far into decks of flashcards. The use of flashcards for studying is widely recognized as one of the most efficient methods for memorization. Test yourself by checking what you have learned and take a quiz on a regular basis. The simplified design stimulates concentration.
 
